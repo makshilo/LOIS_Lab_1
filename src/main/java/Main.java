@@ -5,8 +5,7 @@
 // Класс предназначен для проверки формулы и для проверки знаний пользователя
 
 import config.Config;
-import exception.SKNFException;
-import parser.Parser;
+import parser.PCNF;
 import test.Test;
 
 import java.io.FileInputStream;
@@ -15,28 +14,26 @@ import java.io.IOException;
 
 public class Main {
     public static void main(String[] args) throws IOException {
-        String expression = "";
-        StringBuilder builder = new StringBuilder(expression);
+        StringBuilder expression = new StringBuilder();
         try (FileInputStream fin = new FileInputStream(Config.IN_FILE_PATH)) {
             while (fin.available() > 0) {
                 int oneByte = fin.read();
-                builder.append(((char) oneByte));
+                expression.append(((char) oneByte));
             }
-            expression = builder.toString();
         } catch (FileNotFoundException ex) {
-            System.out.println("File not find!!!");
+            System.out.println("File not found!!!");
         }
 
 
         System.out.println();
-
-        try {
-            new Parser(expression);
-            System.out.println(expression);
-            System.out.println();
-            System.out.println("Formula is Perfect Conjunctive Normal Form!");
-        } catch (SKNFException e) {
-            System.out.println(e);
+        PCNF pcnf = new PCNF();
+        System.out.println(expression);
+        System.out.println();
+        if (pcnf.isPCNF(expression.toString())){
+            System.out.println("Formula is Perfect Conjunctive Normal Form");
+        } else {
+            System.out.println("Formula is NOT Perfect Conjunctive Normal Form");
+            System.out.println(pcnf.getErrorMessage());
         }
 
         Test test = new Test();
