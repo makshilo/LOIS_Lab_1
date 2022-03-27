@@ -15,7 +15,7 @@ public class Config {
     public static final String FILE_NAME = "1";
     public static final String FILE_FORMAT = "txt";
     public static final String IN_FILE_PATH = System.getProperty("user.dir")
-            + "\\src\\main\\resources\\in\\"
+            + "/src/main/resources/in/"
             + FILE_NAME + "."
             + FILE_FORMAT;
     public static final List<String> SIGNS = new ArrayList<>(Arrays.asList("!", "/\\", "\\/", "(", ")", "->", "~"));
