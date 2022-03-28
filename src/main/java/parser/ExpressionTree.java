@@ -26,7 +26,7 @@ public class ExpressionTree {
         }
     }
 
-    private String withoutBrackets(String expression) {
+    private String withoutBrackets(String expression) throws SKNFException {
         String withoutBrackets = expression;
         while (withoutBrackets.startsWith("(") && searchSignOutsideBrackets(withoutBrackets) == -1) {
             withoutBrackets = withoutBrackets.substring(1, withoutBrackets.length() - 1);
@@ -60,7 +60,7 @@ public class ExpressionTree {
         right = new ExpressionTree(rightExpression, pcnf);
     }
 
-    private int searchSignOutsideBrackets(String expression) {
+    private int searchSignOutsideBrackets(String expression) throws SKNFException {
         int check = 0;
         for (int i = 0; i < expression.length(); i++) {
             if (expression.charAt(i) != '(' && expression.charAt(i) != ')' && check == 0) {
@@ -78,10 +78,12 @@ public class ExpressionTree {
         return -1;
     }
 
-    private String searchSign(String expression, int pointer) {
+    private String searchSign(String expression, int pointer) throws SKNFException {
         if (expression.charAt(pointer) == '!' || expression.charAt(pointer) == '~')
             return expression.charAt(pointer) + "";
-        return "" + expression.charAt(pointer) + expression.charAt(pointer + 1);
+        else if (expression.charAt(pointer) == '/' || expression.charAt(pointer) == '\\')
+            return "" + expression.charAt(pointer) + expression.charAt(pointer + 1);
+        else throw new SKNFException("Missing Sign");
     }
 
     public String getExpression() {
