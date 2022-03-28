@@ -81,7 +81,10 @@ public class ExpressionTree {
     private String searchSign(String expression, int pointer) {
         if (expression.charAt(pointer) == '!' || expression.charAt(pointer) == '~')
             return expression.charAt(pointer) + "";
-        return "" + expression.charAt(pointer) + expression.charAt(pointer + 1);
+        else if (expression.charAt(pointer) == '/' || expression.charAt(pointer) == '\\')
+            return "" + expression.charAt(pointer) + expression.charAt(pointer + 1);
+        else
+            return "";
     }
 
     public String getExpression() {
