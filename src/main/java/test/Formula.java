@@ -1,8 +1,8 @@
 /////////////////////////////////////////////////////////////////////////////////////////
 // Лабораторная работа №1 по дисциплине ЛОИС
 // Вариант С: Проверить, является ли формула СКНФ
-// Выполнена студентом грруппы 921701 БГУИР Соловьёв Артём
-// Класс предназначен для составления формулы
+// Выполнена студентом группы 921701 БГУИР Соловьёв А.М. Шило М.Ю
+// Класс предназначен для проверки формулы и для проверки знаний пользователя
 
 package test;
 
@@ -64,16 +64,12 @@ public class Formula {
 
     private static String makeError(String expression) {
         int typeError = (int) (Math.random() * 3);
-        switch (typeError) {
-            case 0:
-                return conjunctionToDisjunction(expression);
-            case 1:
-                return disjunctionToConjunction(expression);
-            case 2:
-                return deleteBrackets(expression);
-            default:
-                return expression;
-        }
+        return switch (typeError) {
+            case 0 -> conjunctionToDisjunction(expression);
+            case 1 -> disjunctionToConjunction(expression);
+            case 2 -> deleteBrackets(expression);
+            default -> expression;
+        };
     }
 
     private static String conjunctionToDisjunction(String expression) {
