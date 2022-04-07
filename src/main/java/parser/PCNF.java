@@ -1,9 +1,3 @@
-/////////////////////////////////////////////////////////////////////////////////////////
-// Лабораторная работа №1 по дисциплине ЛОИС
-// Вариант С: Проверить, является ли формула СКНФ
-// Выполнена студентом группы 921701 БГУИР Шило М.Ю.
-// Класс предназначен для валидации формул
-
 package parser;
 
 import config.Config;
@@ -119,8 +113,8 @@ public class PCNF {
             }
             elements.add(tempList);
         }
-        for (int i = 0; i < elements.size() - 1; i++) {
-            elements.get(i).sort(Collections.reverseOrder());
+        for (List<String> atom : elements) {
+            atom.sort(Collections.reverseOrder());
         }
         for (int i = 0; i < elements.size() - 1; i++) {
             for (int j = 0; j < elements.size(); j++) {

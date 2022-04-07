@@ -12,7 +12,7 @@ import java.util.List;
 
 public class Config {
 
-    public static final String FILE_NAME = "1";
+    public static final String FILE_NAME = "2";
     public static final String FILE_FORMAT = "txt";
     public static final String IN_FILE_PATH = System.getProperty("user.dir")
             + "/src/main/resources/in/"

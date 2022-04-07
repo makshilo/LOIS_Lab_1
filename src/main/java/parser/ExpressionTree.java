@@ -79,12 +79,14 @@ public class ExpressionTree {
     }
 
     private String searchSign(String expression, int pointer) {
-        if (expression.charAt(pointer) == '!' || expression.charAt(pointer) == '~')
+        if (expression.charAt(pointer) == '!' || expression.charAt(pointer) == '~') {
             return expression.charAt(pointer) + "";
-        else if (expression.charAt(pointer) == '/' || expression.charAt(pointer) == '\\')
+        }
+        else if (expression.charAt(pointer) == '/' || expression.charAt(pointer) == '\\') {
             return "" + expression.charAt(pointer) + expression.charAt(pointer + 1);
-        else
+        } else {
             return "";
+        }
     }
 
     public String getExpression() {
